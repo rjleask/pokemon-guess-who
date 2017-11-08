@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background: rgb(5, 5, 5);
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+.App-side-bar{
+  width:20%;
+  height:100vh;
+  display: inline-block;
+}
+.App-container{
+ width:100%;
+ background: rgb(5, 5, 5); 
+}
+.App-pokemon-container{
+  width:80%;
+  display: inline-block;
+  vertical-align: top;
+}
+.pokemon-wrapper{
+  width:100%;
+}
+.pokebox{
+  height:200px;
+  margin:2%;
+  width:15%;
+  display: inline-block;
+  background: rgb(10, 12, 10);
+  box-shadow:0px 0px 10px 5px rgba(208, 210, 214, 0.8),  0px 0px 20px 10px  #b8232d; 
+  border-radius: 5px; 
+  background-image: url("https://fevgames.net/wp-content/uploads/2016/07/0001.png");
+  background-position: center;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+}
+.pokebox:hover{
+  cursor: pointer;
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.green{
+  box-shadow:0px 0px 10px 5px rgba(224, 226, 230, 0.8),  0px 0px 20px 10px  #08e66c;  
+}
+.red {
+  box-shadow:0px 0px 10px 5px rgba(224, 226, 230, 0.8),  0px 0px 20px 10px  #e70c0c;  
+}
+.side-bar-circle{
+  width:100%;
+  height:400px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chosen-card{
+  width:70%
+}
+
