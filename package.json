@@ -1,0 +1,35 @@
+{
+  "name": "pokemonapp",
+  "version": "1.0.0",
+  "description": "MERN app that takes the essentials from guess who and adds an exciting pokemon twist",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js",
+    "client": "node scripts/start-client.js",
+    "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+    "build": "node scripts/build.js",
+    "seed": "node scripts/seedDB.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjleask/pokemon-guess-who.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjleask/pokemon-guess-who/issues"
+  },
+  "homepage": "https://github.com/rjleask/pokemon-guess-who#readme",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.1",
+    "react-router-dom": "^4.2.2"
+  }
+}
