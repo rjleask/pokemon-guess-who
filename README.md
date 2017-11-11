@@ -6,6 +6,7 @@ MERN app that takes the essentials from guess who and adds an exciting pokemon t
 3. Run mongod on separate command line to ensure mongo is listening.
 4. Running yarn start in main folder should launch the app.
 
-To populate your local db, use the following command in the main folder.
+To populate your local db, use the following command in the main folder. RUN THIS AFTER YOU HAVE RUN THE APP ONCES. THE COLLECTION "pokedexes" should have been added at initial run.
 
-`mongoimport --jsonArray --db pokemonguesswhodb --collection pokedex --file ./FinalPokedex.json`
+`mongoimport --jsonArray --db pokemonguesswhodb --collection pokedexes --file ./FinalPokedex.json`
+
