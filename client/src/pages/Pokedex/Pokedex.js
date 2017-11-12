@@ -5,11 +5,18 @@ import API from "../../utils/API";
 class Pokedex extends Component {
   
   state = {
-    pokemon: []
+    pokemon: [],
+    inputCheck: ""
   };
+
+  specialCode = "ArrowUpArrowUpArrowUp";
   
   componentDidMount () {
     this.fillPokedex();
+    document.addEventListener("keydown", this.onKeyDown);
+    this.setState({
+      inputCheck: ""
+    });
   };
 
   fillPokedex = () => {
@@ -22,12 +29,28 @@ class Pokedex extends Component {
       .catch(err => console.log(err));
   };
 
+  onKeyDown = (event) => {
+    this.setState({
+      inputCheck: this.state.inputCheck + event.key
+    });
+    console.log(this.state.inputCheck);
+    this.easterEgg();
+  }
+
+  easterEgg = () => {
+    if(this.state.inputCheck.indexOf(this.specialCode) != -1) {
+      console.log("success");
+      this.setState({
+        inputCheck: ""
+      });
+    }
+  }
+
   imgStyle = {
     height: "100px"
   };
 
   render () {
-    console.log(this.state.pokemon);
     return (
       <div className = "container">
         <div className="panel-heading">
@@ -38,23 +61,23 @@ class Pokedex extends Component {
             {this.state.pokemon.map((pokemon, i) => {
               return (
                 <ListItem key = {i}>
-                  <p>
+                  <div>
                     <p className = "text-center">
                       {pokemon.title}
                     </p>
                     <a href = {pokemon.link} target = "_blank">
-                      <img src = {pokemon.image} style={this.imgStyle} />
+                      <img src = {pokemon.image} style={this.imgStyle} alt = {this.title}/>
                     </a>
                     <span>
                       <strong>Type: </strong> {pokemon.pokeType.map((type, i) => {
                         return (
-                          <span>
+                          <span key = {i}>
                             {i+1}. {type}&nbsp;
                           </span>
                         );
                       })}
                     </span>
-                  </p>
+                  </div>
                 </ListItem>
               );
             })
