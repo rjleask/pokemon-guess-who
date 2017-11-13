@@ -1,4 +1,5 @@
 module.exports = {
-    Pokedex: require("./pokedex")
+    Pokedex: require("./pokedex"),
+    User: require("./users")
   };
   
