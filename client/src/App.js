@@ -9,6 +9,7 @@ const App = () =>
 	      <div>
 	        <Route exact path="/" component={Pokedex} />
 	        <Route exact path="/pokedex" component={Pokedex} />
+	        <Route exact path="/login" component={Pokedex} />                   
 	      </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "../../components/List";
+import Login from "../../components/loginBtn";
 import API from "../../utils/API";
 
 class Pokedex extends Component {
@@ -55,6 +56,7 @@ class Pokedex extends Component {
       <div className = "container">
         <div className="panel-heading">
 					<h3 className="panel-title">Pokedex</h3>
+          <Login />
 				</div>
         <div className = "panel-body">
           <List>

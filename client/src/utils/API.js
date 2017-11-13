@@ -9,18 +9,18 @@ export default {
     },
     authLogin: function (){
         return axios.get("/api/auth/login");
-    },
-    authLogout: function(){
-        return axios.get("/api/auth/logout");
-    },
-    googleAuth: function() {
-        return axios.get("/api/auth/google");
-    },
-    googleAuthRedirect: function() {
-        return axios.get("/api/auth/google/redirect");
-    },
-    getProfile: function() {
-        return axios.get("/api/profile/");
     }
+    // authLogout: function(){
+    //     return axios.get("/api/auth/logout");
+    // },
+    // googleAuth: function() {
+    //     return axios.get("/api/auth/google");
+    // },
+    // googleAuthRedirect: function() {
+    //     return axios.get("/api/auth/google/redirect");
+    // },
+    // getProfile: function() {
+    //     return axios.get("/api/profile/");
+    // }
 
 }
