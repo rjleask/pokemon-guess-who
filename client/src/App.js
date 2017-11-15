@@ -5,13 +5,8 @@ import Pokedex from "./pages/Pokedex";
 const App = () =>
 	<Router>
     <div>
-      <div>
-	      <div>
-	        <Route exact path="/" component={Pokedex} />
-	        <Route exact path="/pokedex" component={Pokedex} />
-	        <Route exact path="/login" component={Pokedex} />                   
-	      </div>
-      </div>
+      <Route exact path="/" component={Pokedex} />
+      <Route exact path="/pokedex" component={Pokedex} />
     </div>
   </Router>;
 

@@ -20,13 +20,20 @@ router.get('/logout', (req, res) => {
 // auth with google+
 router.get('/google', passport.authenticate('google', {
     scope: ['profile']
+}, function(){
+    console.log("WTF");
 }));
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    // res.send(req.user);
-    res.redirect('/profile')
+router.get('/google/redirect', passport.authenticate('google', {failureRedirect: "/"
+}), function (req, res) {
+    console.log("WTF");
+    res.redirect("http://localhost:3000/");
 });
+// }), (req, res) => {
+//     // res.send(req.user);
+//     res.red
+// });
 
 module.exports = router;

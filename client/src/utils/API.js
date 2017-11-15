@@ -6,10 +6,10 @@ export default {
     },
     fillPokedex: function () {
         return axios.get("/api/pokedex/all");
-    },
-    authLogin: function (){
-        return axios.get("/api/auth/login");
     }
+    // authLogin: function (){
+    //      return axios.get("/api/auth/google");
+    // }
     // authLogout: function(){
     //     return axios.get("/api/auth/logout");
     // },
