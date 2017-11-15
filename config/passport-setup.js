@@ -19,7 +19,7 @@ passport.use(
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
       // this has to match callback in google project settings as well
-      callbackURL: '/auth/google/redirect'
+      callbackURL: 'http://localhost:3001/api/auth/google/redirect'
   }, (accessToken, refreshToken, profile, done) => {
       // check if user already exists
       User.findOne({googleId:profile.id}).then((currentUser) =>{
