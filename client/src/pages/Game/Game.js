@@ -1,17 +1,24 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Pokecard from "../../components/Pokecard";
-import Scoreboard from "../../components/Scoreboard"
+import Scoreboard from "../../components/Scoreboard";
+import DisplayToggle from "../../components/DisplayToggle";
+import "./Game.css";
 
 class Game extends Component {
 
   state = {
     allPokemon: [],
-    correctPokemon: [],
+    correctPokemonName: "",
+    correctPokemonType: [],
+    correctPokemonEvolution: {},
     correctValue: "",
     totalScore: 150,
     correctGuess: false,
-    numTiles: 24
+    numTiles: 24,
+    displayType: false,
+    displayEvolveTo: false,
+    displayEvolveFrom: false
   };
 
 
@@ -25,10 +32,12 @@ class Game extends Component {
         let i = Math.floor(Math.random() * res.data.length);
         this.setState({
           allPokemon: res.data,
-          correctPokemon: res.data[i],
+          correctPokemonName: res.data[i].title,
+          correctPokemonType: res.data[i].pokeType[0],
+          correctPokemonEvolution: res.data[i].evolution,
           correctValue: i
         });
-        console.log(this.state.correctPokemon.title);
+        console.log(this.state.correctPokemonName);
       })
       .catch(err => console.log(err));
   };
@@ -57,35 +66,82 @@ class Game extends Component {
     this.setState({
       correctGuess: true
     })
+  };
+
+  displayType = () => {
+    this.setState({
+      displayType: true
+    });
+  };
+
+  displayEvolveTo = () => {
+    this.setState({
+      displayEvolveTo: true
+    });
+  };
+
+  displayEvolveFrom = () => {
+    this.setState({
+      displayEvolveFrom: true
+    });
   }
 
   divStyles = {
     background: "#eee",
-    padding: "10px",
+    padding: "2px",
     border: "1px solid black",
-    margin: "5px",
+    margin: "10px 10px 0px 0px"
   };
 
   render () {
     return (
-      <div className = "container">
+      <div className = "container maingame">
         <div className = "row">
-          <div className = "col-sm-12 col-md-3">
+          <div className = "col-sm-12 col-md-3 sidepanel">
             <Scoreboard
               score = {this.state.totalScore}
+            />
+            <DisplayToggle
+              showText = {this.state.displayType}
+              toggleDisplay = {this.displayType}
+              displayQuestion = {"Show the Type."}
+              displayAnswer = {this.state.correctPokemonType}
+              disabled = {this.state.correctGuess}
+            />
+            <DisplayToggle
+              showText = {this.state.displayEvolveTo}
+              toggleDisplay = {this.displayEvolveTo}
+              displayQuestion = {"Does this pokemon evolve?"}
+              displayAnswer = {this.state.correctPokemonEvolution.to !== "false"  && this.state.correctPokemonEvolution ? (
+                "This pokemon evolves!"
+              ) : (
+                "This pokemon does not evolve!"
+              )}
+              disabled = {this.state.correctGuess}
+            />
+             <DisplayToggle
+              showText = {this.state.displayEvolveFrom}
+              toggleDisplay = {this.displayEvolveFrom}
+              displayQuestion = {"Did this pokemon evolve?"}
+              displayAnswer = {this.state.correctPokemonEvolution.from !== "false" && this.state.correctPokemonEvolution ? (
+                "This pokemon did evolve!"
+              ) : (
+                "This pokemon did not evolve!"
+              )}
+              disabled = {this.state.correctGuess}
             />
           </div>
           <div className = "col-sm-12 col-md-9">
           {this.state.allPokemon.map((pokemon, i) => {
             return(
-                <Pokecard
+               <Pokecard
                 key = {i}
                 title = {pokemon.title}
                 image = {pokemon.image}
                 onClick = {() => this.handleClick(i)}
                 style = {this.divStyles}
                 disabled = {this.state.correctGuess}
-                />
+               />
             );
           })}
           </div>
