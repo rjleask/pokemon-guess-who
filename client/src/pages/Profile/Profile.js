@@ -7,18 +7,9 @@ class Profile extends Component {
     username:[]
   }
   componentDidMount(){
-    this.getUserInfo();
+    
   }
-  getUserInfo = () => {
-    API.getUser()
-    .then(res => {
-      console.log(res);
-      this.setState({
-        username: res.data[0].username
-      });
-    })
-    .catch(err => console.log(err));
-  }
+  
   
   
   render(){
