@@ -1,0 +1,54 @@
+.transition-enter {
+  transform: scale(0);
+}
+.transition-enter-active {
+  transform: scale(1);
+  transition: transform 1000ms ease;
+}
+.transition-exit {
+  transform: scale(1);
+}
+.transition-exit-active {
+  transform: scale(0);
+  transition: transform 1000ms ease;
+}
+.Modal-modal-0-3{
+  display: flex;
+  width:50%;
+  border-radius: 2%;
+  align-items: center;
+  background: rgba(0,0,0,0.1);
+  justify-content: center;
+  height: 37em;
+  flex-wrap: wrap;
+  background-image:linear-gradient(to right, rgba(0, 0, 0, 1), rgba(220, 220, 220, 0.3), rgba(0, 0, 0, 1)), 
+  url(./pika.png) !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+.modal-btns{
+  padding:20px;
+  position: absolute;
+  bottom:5%;
+}
+.play-btn {
+  right:10%;
+}
+.login-btn{
+  left:10%
+}
+.btn{
+  color:white;
+  background: rgb(17, 16, 16);
+  border-color: white;
+}
+.btn:hover{
+  background: rgb(243, 228, 90);
+  border-color: rgb(243, 228, 90);
+  color:black;
+}
+h2{
+  font-size: 45px;
+  position: absolute;
+  top:5%;
+}

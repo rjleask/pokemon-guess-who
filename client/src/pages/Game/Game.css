@@ -1,0 +1,17 @@
+.maingame {
+  color: red;
+  display: table;
+}
+
+.sidepanel {
+  background-color: #eee;
+  padding: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  margin-top: 5px;
+  display: table-cell;
+}
+
+#scoredisplay {
+  font-size: 50px;
+}

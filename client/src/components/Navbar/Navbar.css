@@ -1,0 +1,23 @@
+.nav-container{
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-stuff{
+  padding:15px;
+  margin:0;
+  font-size: 20px;
+}
+.pokedex-link {
+  margin-right: auto;
+}
+.nav-stuff:hover{
+  background: white;
+}
+.dummy-box{
+  margin-right: auto;
+}
+.nav-title{
+  font-size: 40px;
+}
