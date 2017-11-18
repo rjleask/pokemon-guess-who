@@ -50,14 +50,33 @@ class Game extends Component {
     }
   };
 
+  animateScoreChange = (end) => {
+    let range = end - this.state.totalScore;
+    let increment = -1;
+    let stepTime = Math.abs(Math.floor(1500 / range));
+    let timer = setInterval(() => {
+      this.setState({
+        totalScore: this.state.totalScore + increment
+      });
+      if (this.state.totalScore === end) {
+        clearInterval(timer);
+      }
+    }, stepTime);
+  };
+
   incorrectGuess = () => {
     if(this.state.totalScore - 10 >= 0 && !this.state.correctGuess) {
-      this.setState({
-        totalScore: this.state.totalScore - 10
-      });
-      console.log("You answered incorrectly. Take 10");
-    } else {
-      console.log("too low");
+      this.animateScoreChange(this.state.totalScore - 10);
+    } else if (this.state.totalScore !== 0) {
+      this.animateScoreChange(0);
+    }
+  };
+
+  recievedHint = () => {
+    if(this.state.totalScore - 15 >= 0 && !this.state.correctGuess) {
+      this.animateScoreChange(this.state.totalScore - 15);
+    } else if (this.state.totalScore !== 0) {
+      this.animateScoreChange(0);
     }
   };
 
@@ -72,19 +91,22 @@ class Game extends Component {
     this.setState({
       displayType: true
     });
+    this.recievedHint();
   };
 
   displayEvolveTo = () => {
     this.setState({
       displayEvolveTo: true
     });
+    this.recievedHint();
   };
 
   displayEvolveFrom = () => {
     this.setState({
       displayEvolveFrom: true
     });
-  }
+    this.recievedHint();
+  };
 
   divStyles = {
     background: "#eee",
