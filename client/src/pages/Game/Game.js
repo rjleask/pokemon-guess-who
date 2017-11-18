@@ -3,12 +3,14 @@ import API from "../../utils/API";
 import Pokecard from "../../components/Pokecard";
 import Scoreboard from "../../components/Scoreboard";
 import DisplayToggle from "../../components/DisplayToggle";
+import Pokedex from "../../components/Pokedex";
 import "./Game.css";
 
 class Game extends Component {
 
   state = {
     allPokemon: [],
+    inputCheck: "",
     correctPokemonName: "",
     correctPokemonType: [],
     correctPokemonEvolution: {},
@@ -18,12 +20,23 @@ class Game extends Component {
     numTiles: 24,
     displayType: false,
     displayEvolveTo: false,
-    displayEvolveFrom: false
+    displayEvolveFrom: false,
+    showModal: false
   };
 
+  specialCode = "ArrowUpArrowUpArrowUp";
 
   componentDidMount () {
-    this.gameStart()
+    this.gameStart();
+    document.addEventListener("keydown", this.onKeyDown);
+  };
+
+  onKeyDown = (event) => {
+    this.setState({
+      inputCheck: this.state.inputCheck + event.key
+    });
+    console.log(this.state.inputCheck);
+    this.easterEgg();
   };
 
   gameStart = () => {
@@ -51,6 +64,9 @@ class Game extends Component {
   };
 
   animateScoreChange = (end) => {
+    this.setState({
+      correctGuess: true
+    });
     let range = end - this.state.totalScore;
     let increment = -1;
     let stepTime = Math.abs(Math.floor(1500 / range));
@@ -60,6 +76,9 @@ class Game extends Component {
       });
       if (this.state.totalScore === end) {
         clearInterval(timer);
+        this.setState({
+          correctGuess: false
+        })
       }
     }, stepTime);
   };
@@ -81,10 +100,10 @@ class Game extends Component {
   };
 
   correctGuess = () => {
-    console.log(`You have won! You earned ${this.state.totalScore}`);
     this.setState({
       correctGuess: true
     })
+    console.log("You are correct!");
   };
 
   displayType = () => {
@@ -106,6 +125,17 @@ class Game extends Component {
       displayEvolveFrom: true
     });
     this.recievedHint();
+  };
+
+  easterEgg = () => {
+    if(this.state.inputCheck.indexOf(this.specialCode) !== -1) {
+      console.log("success");
+      this.setState({
+        inputCheck: "",
+        showModal: true
+      });
+      document.removeEventListener("keydown", this.onKeyDown);
+    }
   };
 
   divStyles = {
@@ -152,6 +182,17 @@ class Game extends Component {
               )}
               disabled = {this.state.correctGuess}
             />
+            {(this.state.showModal) ? (
+              <div className = "text-center">
+                {/* <button>
+                  View Pokedex
+                </button> */}
+                <Pokedex />
+              </div>
+            ) : (
+              <div className = "text-center">
+              </div>
+            )}
           </div>
           <div className = "col-sm-12 col-md-9">
           {this.state.allPokemon.map((pokemon, i) => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, ListItem } from "../../components/List";
+import { List, ListItem } from "../List";
 import API from "../../utils/API";
 
 class Pokedex extends Component {
@@ -10,6 +10,9 @@ class Pokedex extends Component {
 
   componentDidMount () {
     this.fillPokedex();
+    this.setState({
+      inputCheck: ""
+    });
   };
 
   fillPokedex = () => {
@@ -28,7 +31,7 @@ class Pokedex extends Component {
 
   render () {
     return (
-      <div className = "container">
+      <div className = "col-s-12">
         <div className="panel-heading">
 					<h3 className="panel-title">Pokedex</h3>
 				</div>
@@ -44,15 +47,15 @@ class Pokedex extends Component {
                     <a href = {pokemon.link} target = "_blank">
                       <img src = {pokemon.image} style={this.imgStyle} alt = {this.title}/>
                     </a>
-                    <span>
-                      <strong>Type: </strong> {pokemon.pokeType.map((type, i) => {
+                    <p>
+                      {pokemon.pokeType.map((type, i) => {
                         return (
                           <span key = {i}>
-                            {i+1}. {type}&nbsp;
+                            {type}&nbsp;
                           </span>
                         );
                       })}
-                    </span>
+                    </p>
                   </div>
                 </ListItem>
               );
