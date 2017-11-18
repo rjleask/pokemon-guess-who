@@ -4,6 +4,7 @@ import Jumbotron from "../../components/Jumbotron";
 import "./NotFound.css";
 
 const NotFound = () =>
+<div className="page">
   <Container fluid>
     <Row>
       <Col size="md-12">
@@ -13,6 +14,7 @@ const NotFound = () =>
         </Jumbotron>
       </Col>
     </Row>
-  </Container>;
+  </Container>
+</div>
 
 export default NotFound;

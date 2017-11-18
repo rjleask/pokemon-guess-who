@@ -1,3 +1,18 @@
+.page {
+	padding-top: 50px;
+	padding-left: 150px;
+	padding-right: 150px;
+}
+
+.jumbotron {
+	background: linear-gradient(125deg, black, #363a40, #537384  75%, #5da1c5) !important;
+	box-shadow: 10px 10px 5px #888888;
+}
+
 .title {
-	color: red !important;
+	color: black !important;
+	text-align: center;
+	font-family: 'Kelly Slab', cursive !important;
+	text-shadow: 2px 2px 0px #82b2d4;
+	font-size: 65px !important;
 }
