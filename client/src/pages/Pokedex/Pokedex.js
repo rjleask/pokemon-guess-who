@@ -39,7 +39,7 @@ class Pokedex extends Component {
   }
 
   easterEgg = () => {
-    if(this.state.inputCheck.indexOf(this.specialCode) != -1) {
+    if(this.state.inputCheck.indexOf(this.specialCode) !== -1) {
       console.log("success");
       this.setState({
         inputCheck: ""

@@ -13,8 +13,9 @@ router.get('/logout', (req, res) => {
     // handle with passport
     // res.send('logging out');
     // builtin passport function amazing
+    // console.log("got here", req.logout);
     req.logout();
-    res.redirect('/');
+    res.redirect('http://localhost:3000/home');
 });
 
 // auth with google+
@@ -28,7 +29,7 @@ router.get('/google', passport.authenticate('google', {
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), function (req, res) {
     console.log("WTF");
-    res.redirect("http://localhost:3000/");
+    res.redirect("http://localhost:3000/home");
 });
 // }), (req, res) => {
 //     // res.send(req.user);

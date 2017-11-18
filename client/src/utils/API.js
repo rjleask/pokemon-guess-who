@@ -6,21 +6,18 @@ export default {
     },
     fillPokedex: function () {
         return axios.get("/api/pokedex/all");
-    }
+    },
+    getUser: function() {
+        return axios.get("/api/profile/user")
+    },
+    saveCookie: function(userData){
+        return axios.post("/api/profile/user", userData);
+    } 
     // authLogin: function (){
     //      return axios.get("/api/auth/google");
     // }
     // authLogout: function(){
     //     return axios.get("/api/auth/logout");
     // },
-    // googleAuth: function() {
-    //     return axios.get("/api/auth/google");
-    // },
-    // googleAuthRedirect: function() {
-    //     return axios.get("/api/auth/google/redirect");
-    // },
-    // getProfile: function() {
-    //     return axios.get("/api/profile/");
-    // }
-
+  
 }

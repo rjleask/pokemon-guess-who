@@ -17,8 +17,10 @@ app.use(express.static("client/build"));
 // encrypt cookie
 app.use(cookieSession({
   // cookie expires after a day
+  name:'user',
   maxAge:24*60*60*1000,
-  keys: [keys.session.cookieKey]
+  keys: [keys.session.cookieKey],
+  httpOnly:false
 }))
 
 // initialize passport
