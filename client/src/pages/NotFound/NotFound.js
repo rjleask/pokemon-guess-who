@@ -9,7 +9,7 @@ const NotFound = () =>
     <Row>
       <Col size="md-12">
         <Jumbotron>
-          <h1 className="title">404 Page Not Found</h1>
+          <h1 className="title">404 error</h1>
         <img src="https://vignette.wikia.nocookie.net/pokemon/images/3/3e/114Tangela.png/revision/latest/scale-to-width-down/200?cb=20140328205759" alt="Tangela" />
         </Jumbotron>
       </Col>
