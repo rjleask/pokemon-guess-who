@@ -7,18 +7,19 @@
 .title {
 	text-align: center;
 	color: #0f0018 !important;
-	text-shadow: -1px 0 #d77dff, 0 1px #631880, 1px 0 #631880, 0 -1px #631880 !important;
-	font-size: 75px !important;
-	font-family: 'Black Ops One', cursive !important;
+	text-shadow: #631880 1px 0 10px; 
+	font-size: 70px !important;
+	font-family: 'Audiowide', cursive !important;
+
 }
 
 .jumbotron {
-	background: white;
+	/*background: white;*/
+	background: linear-gradient(to right, #c6c1d2, #e2e2e2);
 	box-shadow: 10px 10px 5px #888888;
 	border: solid 1px;
 }
 
 .jumbotron:hover {
-	background: linear-gradient(top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)) !important;
 	background-image: url("scary.png") !important;
 }
