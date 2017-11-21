@@ -12,7 +12,10 @@ export default {
     },
     saveCookie: function(userData){
         return axios.post("/api/profile/user", userData);
-    } 
+    }, 
+    getHighScores: function(){
+        return axios.get("/api/profile/highscore");
+    }
     // authLogin: function (){
     //      return axios.get("/api/auth/google");
     // }

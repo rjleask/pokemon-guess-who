@@ -33,7 +33,8 @@ passport.use(
             // makes new user and saves it to our database
             new User ({
                 username:profile.displayName,
-                googleId:profile.id
+                googleId:profile.id,
+                highScore:0
             }).save().then((newUser) => {
                 console.log('new user created: '+ newUser);
                 done(null,newUser);
