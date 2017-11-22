@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const heroku = false;
+const heroku = true;
 let url;
 if(heroku){
      url = 'https://calm-hamlet-36261.herokuapp.com/home';

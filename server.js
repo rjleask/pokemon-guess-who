@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static("client/build"));
 // encrypt cookie
 let cook;
-let heroku = false;
+let heroku = true;
 if(heroku){
   cook=ENV['COOKIE_KEY'];
 }else{

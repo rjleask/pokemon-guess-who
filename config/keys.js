@@ -2,8 +2,8 @@
 
 module.exports = {
   google: {
-      clientID: '',
-      clientSecret: ''
+      clientID: '124016383603-tbo3h4qnrhr1tjo10abbrsbqjdbregdm.apps.googleusercontent.com',
+      clientSecret: 'W-s72KG_zDQSHjcgqhecRSAh'
   },
   // database connection
   mongodb: {
@@ -12,6 +12,6 @@ module.exports = {
   },
   // encript cookie key
   session: {
-      cookieKey: ''
+      cookieKey: 'encryptedcookie'
   }
 };

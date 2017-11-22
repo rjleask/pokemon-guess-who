@@ -5,7 +5,7 @@ const User = require('../models/users');
 let google_client;
 let google_secret;
 let url;
-let heroku = false;
+let heroku = true;
 if(heroku){
   google_client=ENV['GOOGLE_CLIENT_ID'];
   google_secret=ENV['GOOGLE_CLIENT_SECRET'];
