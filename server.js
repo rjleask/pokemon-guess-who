@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const keys = require('./config/keys');
+const keys;
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
@@ -22,6 +22,7 @@ let heroku = false;
 if(heroku){
   cook=ENV['COOKIE_KEY'];
 }else{
+  keys = require('./config/keys');
   cook=keys.session.cookieKey;
 }
 app.use(cookieSession({
