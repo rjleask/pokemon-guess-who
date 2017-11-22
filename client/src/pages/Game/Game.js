@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import Pokecard from "../../components/Pokecard";
 import Scoreboard from "../../components/Scoreboard";
 import DisplayToggle from "../../components/DisplayToggle";
-import Pokedex from "../../components/Pokedex";
+import NewGameButton from "../../components/NewGameButton";
 import "./Game.css";
 
 class Game extends Component {
@@ -11,6 +11,8 @@ class Game extends Component {
   state = {
     allPokemon: [],
     inputCheck: "",
+    activeGame: false,
+    correctPokemon: {},
     correctPokemonName: "",
     correctPokemonType: [],
     correctPokemonEvolution: {},
@@ -21,13 +23,12 @@ class Game extends Component {
     displayType: false,
     displayEvolveTo: false,
     displayEvolveFrom: false,
-    showModal: false
+    showHintLink: false
   };
 
   specialCode = "ArrowUpArrowUpArrowUp";
 
   componentDidMount () {
-    this.gameStart();
     document.addEventListener("keydown", this.onKeyDown);
   };
 
@@ -39,17 +40,25 @@ class Game extends Component {
     this.easterEgg();
   };
 
+  startNewGame = () => {
+    this.gameStart();
+  }
   gameStart = () => {
     API.startGame(this.state.numTiles)
       .then(res => {
         let i = Math.floor(Math.random() * res.data.length);
         this.setState({
-          allPokemon: res.data,
-          correctPokemonName: res.data[i].title,
-          correctPokemonType: res.data[i].pokeType[0],
-          correctPokemonEvolution: res.data[i].evolution,
-          correctValue: i
+          allPokemon: res.data
         });
+        this.setState({
+          correctPokemon: this.state.allPokemon[i],
+          correctPokemonType: this.state.allPokemon[i].pokeType[0],
+          correctPokemonName: this.state.allPokemon[i].title,
+          correctPokemonEvolution: this.state.allPokemon[i].evolution,
+          correctValue: i,
+          activeGame: true
+        })
+        console.log(this.state.correctPokemon);
       })
       .catch(err => console.log(err));
   };
@@ -100,7 +109,8 @@ class Game extends Component {
 
   correctGuess = () => {
     this.setState({
-      correctGuess: true
+      correctGuess: true,
+      endGame: true
     })
     console.log("You are correct!");
   };
@@ -119,6 +129,23 @@ class Game extends Component {
     this.recievedHint();
   };
 
+  // initializeNewGame = () => {
+  //   if(cookie exists and is database) {
+  //     load user info from database, add to state
+  //     set state logged in to true
+  //     fill pokedex
+  //   } else {
+  //     loggedin = false
+  //     fill pokedex
+  //   }
+  // }
+
+  // updateUserOnWin = () => {
+  //   if (logged in is true) {
+  //     update user with pokemon and score
+  //   }
+  // }
+
   displayEvolveFrom = () => {
     this.setState({
       displayEvolveFrom: true
@@ -131,7 +158,7 @@ class Game extends Component {
       console.log("success");
       this.setState({
         inputCheck: "",
-        showModal: true
+        showHintLink: true
       });
       document.removeEventListener("keydown", this.onKeyDown);
     }
@@ -149,47 +176,63 @@ class Game extends Component {
       <div className = "container maingame">
         <div className = "row">
           <div className = "col-sm-12 col-md-3 sidepanel">
-            <Scoreboard
-              score = {this.state.totalScore}
-            />
-            <DisplayToggle
-              showText = {this.state.displayType}
-              toggleDisplay = {this.displayType}
-              displayQuestion = {"Show the Type."}
-              displayAnswer = {this.state.correctPokemonType}
-              disabled = {this.state.correctGuess}
-            />
-            <DisplayToggle
-              showText = {this.state.displayEvolveTo}
-              toggleDisplay = {this.displayEvolveTo}
-              displayQuestion = {"Does this pokemon evolve?"}
-              displayAnswer = {this.state.correctPokemonEvolution.to !== "false"  && this.state.correctPokemonEvolution ? (
-                "This pokemon evolves!"
-              ) : (
-                "This pokemon does not evolve!"
-              )}
-              disabled = {this.state.correctGuess}
-            />
-             <DisplayToggle
-              showText = {this.state.displayEvolveFrom}
-              toggleDisplay = {this.displayEvolveFrom}
-              displayQuestion = {"Did this pokemon evolve?"}
-              displayAnswer = {this.state.correctPokemonEvolution.from !== "false" && this.state.correctPokemonEvolution ? (
-                "This pokemon did evolve!"
-              ) : (
-                "This pokemon did not evolve!"
-              )}
-              disabled = {this.state.correctGuess}
-            />
-            {(this.state.showModal) ? (
+            {(!this.state.activeGame) ? (
+              <NewGameButton
+                onClick = {this.startNewGame}
+              />
+            ) : (
+              <div>
+                <Scoreboard
+                  score = {this.state.totalScore}
+                />
+                <DisplayToggle
+                  showText = {this.state.displayType}
+                  toggleDisplay = {this.displayType}
+                  displayQuestion = {"Show the Type."}
+                  displayAnswer = {this.state.correctPokemonType}
+                  disabled = {this.state.correctGuess}
+                />
+                <DisplayToggle
+                  showText = {this.state.displayEvolveTo}
+                  toggleDisplay = {this.displayEvolveTo}
+                  displayQuestion = {"Does this pokemon evolve?"}
+                  displayAnswer = {this.state.correctPokemonEvolution.to !== "false"  && this.state.correctPokemonEvolution ? (
+                    "This pokemon evolves!"
+                  ) : (
+                      "This pokemon does not evolve!"
+                    )}
+                  disabled = {this.state.correctGuess}
+                />
+                <DisplayToggle
+                  showText = {this.state.displayEvolveFrom}
+                  toggleDisplay = {this.displayEvolveFrom}
+                  displayQuestion = {"Did this pokemon evolve?"}
+                  displayAnswer = {this.state.correctPokemonEvolution.from !== "false" && this.state.correctPokemonEvolution ? (
+                    "This pokemon did evolve!"
+                  ) : (
+                    "This pokemon did not evolve!"
+                  )}
+                  disabled = {this.state.correctGuess}
+                />
+              </div>
+            )}
+            {(this.state.showHintLink) ? (
               <div className = "text-center">
-                {/* <button>
+                <a href="/pokedex" target="_blank">
                   View Pokedex
-                </button> */}
-                <Pokedex />
+                </a>
               </div>
             ) : (
               <div className = "text-center">
+              </div>
+            )}
+            {(!this.state.endGame) ? (
+              <div >
+                Game is not over.
+              </div>
+            ) : (
+              <div>
+               Game is over.
               </div>
             )}
           </div>
