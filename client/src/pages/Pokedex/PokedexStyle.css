@@ -26,17 +26,18 @@ body {
 	font-size: 20px;
 }
 
-.Pokeball {
-	height: 60px;
-	width: 60px;
-}
-
 .list-group-item {
 	margin-bottom: 1px;
 	background-color: #fff9c4;
 	border: 1px solid gold;
 }
 
-/*element.style {
-	padding-right: 25px;
-}*/
+img {
+	padding-right: 10px;
+}
+
+.Pokeball {
+	height: 60px;
+	width: 60px;
+	padding-right: 0px;
+}
