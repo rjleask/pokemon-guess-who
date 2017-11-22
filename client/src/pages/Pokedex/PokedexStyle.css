@@ -1,11 +1,12 @@
 body {
 	font-size: 16px;
+	background-image: url("https://cdn0.vox-cdn.com/thumbor/Jd7uGu_KZHAovHt7dYAYBX-p4As=/180x0:1872x952/1600x900/cdn0.vox-cdn.com/uploads/chorus_image/image/49104733/pokemon-list.0.0.png");
 }
 
 .container {
 	text-align: center;
 	background-color: black;
-	width: 50%;
+	width: 30%;
 }
 
 .panel-title {
@@ -19,7 +20,6 @@ body {
 	text-align: center;
 }
 
-/*Pokemon name*/
 .text-center {
 	text-align: center;
 	color: black;
