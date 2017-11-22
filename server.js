@@ -17,11 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("client/build"));
 // encrypt cookie
+let cook;
+let heroku = false;
+if(heroku){
+  cook=ENV['COOKIE_KEY'];
+}else{
+  cook=keys.session.cookieKey;
+}
 app.use(cookieSession({
   // cookie expires after a day
   name:'user',
   maxAge:24*60*60*1000,
-  keys: [keys.session.cookieKey],
+  keys: [cook],
   httpOnly:false
 }))
 

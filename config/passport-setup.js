@@ -2,6 +2,21 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const keys = require('./keys');
 const User = require('../models/users');
+let google_client;
+let google_secret;
+let url;
+let heroku = false;
+if(heroku){
+  google_client=ENV['GOOGLE_CLIENT_ID'];
+  google_secret=ENV['GOOGLE_CLIENT_SECRET'];
+  url = 'https://calm-hamlet-36261.herokuapp.com/api/auth/google/redirect';
+  
+}else{
+    google_client=keys.google.clientID;
+    google_secret=keys.google.clientSecret;
+    url = 'http://localhost:3001/api/auth/google/redirect';
+}
+
 // user info that gets put into the cookie, takes in current/new user
 passport.serializeUser((user, done) =>{
   done(null,user.id);
@@ -16,10 +31,10 @@ passport.deserializeUser((id, done) =>{
 passport.use(
   new GoogleStrategy({
       // options for google strategy
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret,
+      clientID: google_client,
+      clientSecret: google_secret,
       // this has to match callback in google project settings as well
-      callbackURL: 'http://localhost:3001/api/auth/google/redirect'
+      callbackURL: url
   }, (accessToken, refreshToken, profile, done) => {
       // check if user already exists
       User.findOne({googleId:profile.id}).then((currentUser) =>{
