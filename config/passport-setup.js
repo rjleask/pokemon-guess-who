@@ -7,8 +7,8 @@ let google_secret;
 let url;
 let heroku = true;
 if(heroku){
-  google_client=ENV['GOOGLE_CLIENT_ID'];
-  google_secret=ENV['GOOGLE_CLIENT_SECRET'];
+  google_client=process.env.GOOGLE_CLIENT_ID;
+  google_secret=process.env.GOOGLE_CLIENT_SECRET;
   url = 'https://calm-hamlet-36261.herokuapp.com/api/auth/google/redirect';
   
 }else{

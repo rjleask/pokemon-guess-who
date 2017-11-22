@@ -20,7 +20,7 @@ app.use(express.static("client/build"));
 let cook;
 let heroku = true;
 if(heroku){
-  cook=ENV['COOKIE_KEY'];
+  cook=process.env.COOKIE_KEY;
 }else{
   keys = require('./config/keys');
   cook=keys.session.cookieKey;
