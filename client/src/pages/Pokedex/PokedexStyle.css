@@ -1,0 +1,42 @@
+body {
+	font-size: 16px;
+}
+
+.container {
+	text-align: center;
+	background-color: black;
+	width: 50%;
+}
+
+.panel-title {
+	font-size: 50px;
+	font-family: 'Righteous', cursive;
+	padding-top: 20px;
+	color: gold;
+}
+
+.panel-body {
+	text-align: center;
+}
+
+/*Pokemon name*/
+.text-center {
+	text-align: center;
+	color: black;
+	font-size: 20px;
+}
+
+.Pokeball {
+	height: 60px;
+	width: 60px;
+}
+
+.list-group-item {
+	margin-bottom: 1px;
+	background-color: #fff9c4;
+	border: 1px solid gold;
+}
+
+/*element.style {
+	padding-right: 25px;
+}*/

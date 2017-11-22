@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { List, ListItem } from "../../components/List";
 import Login from "../../components/loginBtn";
 import API from "../../utils/API";
+import "./PokedexStyle.css";
 
 class Pokedex extends Component {
   
@@ -55,8 +56,7 @@ class Pokedex extends Component {
     return (
       <div className = "container">
         <div className="panel-heading">
-					<h3 className="panel-title">Pokedex</h3>
-          <Login />
+					<h3 className="panel-title">Pokedex <img className="Pokeball" src="https://vignette.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807" alt="Pokeball"></img></h3>
 				</div>
         <div className = "panel-body">
           <List>
