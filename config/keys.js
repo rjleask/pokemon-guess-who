@@ -11,7 +11,7 @@ module.exports = {
       myDB: 'mongodb://localhost/pokemonguesswhodb'
   },
   // encript cookie key
-  session: {
+  session: { 
       cookieKey: 'encryptedcookie'
   }
 };
