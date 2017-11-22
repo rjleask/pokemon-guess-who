@@ -12,15 +12,18 @@ export default {
     },
     saveCookie: function(userData){
         return axios.post("/api/profile/user", userData);
-    }, 
+    },
     getHighScores: function(){
         return axios.get("/api/profile/highscore");
-    }
+    },
+    getUserInfo: function(cookie) {
+      return axios.get(`/api/profile/user/${cookie}`);
+  }
     // authLogin: function (){
     //      return axios.get("/api/auth/google");
     // }
     // authLogout: function(){
     //     return axios.get("/api/auth/logout");
     // },
-  
+
 }

@@ -1,10 +1,14 @@
 import React from "react";
+import NewGameButton from "../NewGameButton";
 
 const Pokecard = props =>
-    <div className = "col-sm-6 col-md-2 text-center" key = {props.i}>
+    <div className = "text-center">
       <div style = {props.style}>
+        Congrats! You caught {props.title}
         <img className = "img-responsive" src = {props.image} alt = {props.title}/>
-        <button className = "btn-info" onClick = {props.onClick} disabled = {props.disabled}>Guess me!</button>
+        <NewGameButton
+          onClick = {props.onClick}
+        />
       </div>
     </div>;
 

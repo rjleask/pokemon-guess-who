@@ -4,6 +4,7 @@ import Pokecard from "../../components/Pokecard";
 import Scoreboard from "../../components/Scoreboard";
 import DisplayToggle from "../../components/DisplayToggle";
 import NewGameButton from "../../components/NewGameButton";
+import WinPokeCard from "../../components/WinPokeCard";
 import "./Game.css";
 
 class Game extends Component {
@@ -30,6 +31,8 @@ class Game extends Component {
 
   componentDidMount () {
     document.addEventListener("keydown", this.onKeyDown);
+    this.getPokemon();
+    this.getUserInfo();
   };
 
   onKeyDown = (event) => {
@@ -40,27 +43,53 @@ class Game extends Component {
     this.easterEgg();
   };
 
-  startNewGame = () => {
-    this.gameStart();
-  }
-  gameStart = () => {
+  getPokemon = () => {
     API.startGame(this.state.numTiles)
-      .then(res => {
-        let i = Math.floor(Math.random() * res.data.length);
-        this.setState({
-          allPokemon: res.data
-        });
-        this.setState({
-          correctPokemon: this.state.allPokemon[i],
-          correctPokemonType: this.state.allPokemon[i].pokeType[0],
-          correctPokemonName: this.state.allPokemon[i].title,
-          correctPokemonEvolution: this.state.allPokemon[i].evolution,
-          correctValue: i,
-          activeGame: true
-        })
-        console.log(this.state.correctPokemon);
+    .then(res => {
+      let i = Math.floor(Math.random() * res.data.length);
+      this.setState({
+        allPokemon: res.data,
+        correctPokemon: res.data[i],
+        correctPokemonType: res.data[i].pokeType[0],
+        correctPokemonName: res.data[i].title,
+        correctPokemonEvolution: res.data[i].evolution,
+        correctValue: i,
       })
-      .catch(err => console.log(err));
+      console.log(this.state.correctPokemon);
+      console.log(this.getCookie("user"));
+    })
+    .catch(err => console.log(err));
+  }
+
+  startNewGame = () => {
+    this.getPokemon();
+    this.setState({
+      endGame: false,
+      correctGuess: false
+    })
+  };
+
+  getUserInfo = () => {
+    API.getUserInfo(this.getCookie("user"))
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => console.log(err));
+  };
+
+  getCookie = (cookiename) => {
+    var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
+    return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
+  };
+
+  gameStart = () => {
+    this.setToActive();
+  };
+
+  setToActive = () => {
+    this.setState({
+      activeGame: true
+    });
   };
 
   handleClick = (data) => {
@@ -129,17 +158,6 @@ class Game extends Component {
     this.recievedHint();
   };
 
-  // initializeNewGame = () => {
-  //   if(cookie exists and is database) {
-  //     load user info from database, add to state
-  //     set state logged in to true
-  //     fill pokedex
-  //   } else {
-  //     loggedin = false
-  //     fill pokedex
-  //   }
-  // }
-
   // updateUserOnWin = () => {
   //   if (logged in is true) {
   //     update user with pokemon and score
@@ -164,6 +182,19 @@ class Game extends Component {
     }
   };
 
+  renderPokeCards = () => {
+    if(this.state.activeGame) {
+      return this.state.allPokemon.map((pokemon, i) => <Pokecard
+        key = {i}
+        title = {pokemon.title}
+        image = {pokemon.image}
+        onClick = {() => this.handleClick(i)}
+        style = {this.divStyles}
+        disabled = {this.state.correctGuess}
+        />);
+    }
+  };
+
   divStyles = {
     background: "#eee",
     padding: "2px",
@@ -178,7 +209,7 @@ class Game extends Component {
           <div className = "col-sm-12 col-md-3 sidepanel">
             {(!this.state.activeGame) ? (
               <NewGameButton
-                onClick = {this.startNewGame}
+                onClick = {this.gameStart}
               />
             ) : (
               <div>
@@ -227,28 +258,23 @@ class Game extends Component {
               </div>
             )}
             {(!this.state.endGame) ? (
-              <div >
+              <div>
+                <br />
                 Game is not over.
               </div>
             ) : (
               <div>
-               Game is over.
+                <br />
+                <WinPokeCard
+                  onClick = {this.startNewGame}
+                  title = {this.state.correctPokemonName}
+                  image = {this.state.correctPokemon.image}
+                />
               </div>
             )}
           </div>
           <div className = "col-sm-12 col-md-9">
-          {this.state.allPokemon.map((pokemon, i) => {
-            return(
-               <Pokecard
-                key = {i}
-                title = {pokemon.title}
-                image = {pokemon.image}
-                onClick = {() => this.handleClick(i)}
-                style = {this.divStyles}
-                disabled = {this.state.correctGuess}
-               />
-            );
-          })}
+            {this.renderPokeCards()}
           </div>
         </div>
       </div>
