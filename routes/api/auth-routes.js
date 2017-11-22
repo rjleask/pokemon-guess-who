@@ -1,6 +1,13 @@
 const router = require('express').Router();
 const passport = require('passport');
-
+const heroku = false;
+let url;
+if(heroku){
+     url = 'https://calm-hamlet-36261.herokuapp.com/home';
+}else{
+     url = 'http://localhost:3000/home';
+}
+// import CONFIG from "../../config-env.js";
 // auth login
 router.get('/login', (req, res) => {
     // res.render('login', { user: req.user });
@@ -12,24 +19,21 @@ router.get('/login', (req, res) => {
 router.get('/logout', (req, res) => {
     // handle with passport
     // res.send('logging out');
-    // builtin passport function amazing
-    // console.log("got here", req.logout);
+    // builtin passport function amazing  
     req.logout();
-    res.redirect('http://localhost:3000/home');
+    res.redirect(url);
 });
 
 // auth with google+
 router.get('/google', passport.authenticate('google', {
     scope: ['profile']
 }, function(){
-    console.log("WTF");
 }));
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), function (req, res) {
-    console.log("WTF");
-    res.redirect("http://localhost:3000/home");
+    res.redirect(url);
 });
 // }), (req, res) => {
 //     // res.send(req.user);
