@@ -24,7 +24,9 @@ class Game extends Component {
     displayType: false,
     displayEvolveTo: false,
     displayEvolveFrom: false,
-    showHintLink: false
+    showHintLink: false,
+    user: "",
+    cookie: false
   };
 
   specialCode = "ArrowUpArrowUpArrowUp";
@@ -56,7 +58,6 @@ class Game extends Component {
         correctValue: i,
       })
       console.log(this.state.correctPokemon);
-      console.log(this.getCookie("user"));
     })
     .catch(err => console.log(err));
   }
@@ -70,11 +71,37 @@ class Game extends Component {
   };
 
   getUserInfo = () => {
-    API.getUserInfo(this.getCookie("user"))
-    .then(res => {
-      console.log(res.data)
-    })
-    .catch(err => console.log(err));
+    if(this.state.cookie) {
+      API.getUserInfo(this.getCookie("user"))
+      .then(res => {
+        console.log(res.data)
+        this.setState({
+          user: res.data
+        });
+      })
+      .catch(err => console.log(err));
+    }
+  };
+
+  updateUser = () => {
+      API.updateGameWin({
+        _id: this.state.user._id,
+        highScore: parseInt(this.state.user.highScore) + parseInt(this.state.totalScore),
+        pokemon: this.state.correctPokemon
+      })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => console.log(err));
+  };
+
+  cookieCheck(){
+    if(document.cookie.length > 90) {
+      this.setState({cookie:true});
+    }
+    else{
+      this.setState({cookie:false});
+    }
   };
 
   getCookie = (cookiename) => {
@@ -141,6 +168,9 @@ class Game extends Component {
       correctGuess: true,
       endGame: true
     })
+    if(this.state.cookie) {
+      this.updateUser();
+    }
     console.log("You are correct!");
   };
 
@@ -157,12 +187,6 @@ class Game extends Component {
     });
     this.recievedHint();
   };
-
-  // updateUserOnWin = () => {
-  //   if (logged in is true) {
-  //     update user with pokemon and score
-  //   }
-  // }
 
   displayEvolveFrom = () => {
     this.setState({

@@ -43,7 +43,7 @@ class Home extends Component {
     var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
   }
-  
+
   render(){
     if(this.state.cookie === false){
     return (
@@ -62,12 +62,12 @@ class Home extends Component {
             <div className="content-wrapper">
               <p className="welcome-back">Welcome Back!</p>
               <p className="user-play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play</button></Link></p>
-              <Logout /> 
+              <Logout />
             </div>
           </div>
         </div>
       )
-    } 
+    }
   }
 }
 export default Home;

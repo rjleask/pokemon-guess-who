@@ -9,4 +9,7 @@ router.route('/user')
 router.route("/user/:cookie")
   .get(profileController.getUniqueUser)
 
+router.route("/user/id")
+  .post(profileController.updateGameWin)
+
 module.exports = router;
