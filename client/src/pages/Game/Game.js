@@ -211,26 +211,31 @@ class Game extends Component {
       return this.state.allPokemon.map((pokemon, i) => <Pokecard
         key = {i}
         title = {pokemon.title}
+        cardStyle = {pokemon.pokeType[0]}
         image = {pokemon.image}
         onClick = {() => this.handleClick(i)}
         style = {this.divStyles}
+        onMouseEnter = {() => this.handleMouseEnter(pokemon.pokeType[0])}
         disabled = {this.state.correctGuess}
         />);
     }
   };
+  handleMouseEnter = (type) => {
+    console.log(type);
+  }
 
   divStyles = {
-    background: "#eee",
+    background: "black",
     padding: "2px",
     border: "1px solid black",
-    margin: "10px 10px 0px 0px"
   };
-
+  
   render () {
     return (
-      <div className = "container maingame">
-        <div className = "row">
-          <div className = "col-sm-12 col-md-3 sidepanel">
+      <div>
+      <div className="game-wrapper">
+        <div className = "sidepanel">
+          <div className = "sidepanel-oval">
             {(!this.state.activeGame) ? (
               <NewGameButton
                 onClick = {this.gameStart}
@@ -297,10 +302,15 @@ class Game extends Component {
               </div>
             )}
           </div>
-          <div className = "col-sm-12 col-md-9">
-            {this.renderPokeCards()}
+        </div>
+        <div className = "container maingame">
+          <div className = "roww">
+            <div className = "pokecardss">
+              {this.renderPokeCards()}
+            </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }

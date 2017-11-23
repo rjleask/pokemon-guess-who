@@ -1,0 +1,59 @@
+.pokemoncard-box{
+  display: inline-block;
+  width: 15%;
+  box-shadow: 0px 0px 0px 5px rgb(255, 255, 255), 0px 0px 3px 4px #fcfcfc;
+}
+.pokemoncard-box:hover{
+  -moz-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.Fire:hover{
+  -webkit-box-shadow: 0px 0px 10px 10px rgb(255, 0, 0), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(255, 0, 0), 0px 0px 10px 7px #fcfcfc;
+}
+.Normal:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(137, 138, 125), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 5px rgb(137, 138, 125), 0px 0px 10px 10px #fcfcfc;
+}
+.Fighting:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(154, 160, 73), 0px 0px 10px 7px #fcfcfc;
+}
+.Poison:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(0, 255, 13), 0px 0px 10px 7px #fcfcfc;
+}
+.Grass:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(1, 88, 5), 0px 0px 10px 7px #fcfcfc;
+}
+.Rock:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(68, 68, 68), 0px 0px 10px 7px #fcfcfc;
+}
+.Ground:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(88, 56, 7), 0px 0px 10px 7px #fcfcfc;
+}
+.Bug:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(187, 255, 0), 0px 0px 10px 7px #fcfcfc;
+}
+.Ghost:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(134, 10, 172), 0px 0px 10px 7px #fcfcfc;
+}
+.Electric:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(245, 241, 4), 0px 0px 10px 7px #fcfcfc;
+}
+.Psychic:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(4, 66, 95), 0px 0px 10px 7px #fcfcfc;
+}
+.Water:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(0, 64, 241), 0px 0px 10px 7px #fcfcfc;
+}
