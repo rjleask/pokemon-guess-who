@@ -5,6 +5,7 @@ import Scoreboard from "../../components/Scoreboard";
 import DisplayToggle from "../../components/DisplayToggle";
 import NewGameButton from "../../components/NewGameButton";
 import WinPokeCard from "../../components/WinPokeCard";
+import {Link} from "react-router-dom";
 import "./Game.css";
 
 class Game extends Component {
@@ -236,6 +237,8 @@ class Game extends Component {
       <div className="game-wrapper">
         <div className = "sidepanel">
           <div className = "sidepanel-oval">
+              <button className="btn btn-primary score-navs home-nav"><Link to="/home">Home</Link></button>
+              <button className="btn btn-primary score-navs profile-nav"><Link to="/profile">Profile</Link></button>            
             {(!this.state.activeGame) ? (
               <NewGameButton
                 onClick = {this.gameStart}
@@ -287,7 +290,7 @@ class Game extends Component {
               </div>
             )}
             {(!this.state.endGame) ? (
-              <div>
+              <div className="game-over-msg">
                 <br />
                 Game is not over.
               </div>

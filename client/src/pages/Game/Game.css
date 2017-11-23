@@ -14,6 +14,7 @@
   width: 250px;
   vertical-align: top;
   background: black;
+  position: relative;
 }
 .sidepanel-oval{
   width:100%;
@@ -34,18 +35,39 @@
   text-align: center;
   background: black;
 }
-.btn {
+.score-btns {
   font-size: 14px;
   padding:6px 8px;
-}
-.btn:hover{
-  background:rgb(76, 93, 214);
-}
-.btn-primary{
   background:red;
+  
+}
+.score-btns:hover{
+  background: rgb(255, 177, 177);
 }
 .togglebuttons p{
   color:black;
+}
+.score-navs{
+  font-size: 10px;
+}
+.home-nav{
+  position: absolute;
+  left:0;
+  bottom:0;
+  bottom: 10px;
+  background: #ff6161;
+}
+.profile-nav{
+  position: absolute;
+  right:0;
+  bottom: 10px;
+  background: #ff6161;
+}
+.score-navs a{
+  color:black;
+}
+.game-over-msg{
+  display: none;
 }
 /* media queries */
 
@@ -56,13 +78,8 @@
   .sidepanel{
     height:inherit;
   }
-}
-@media (max-width: 874px){
   .sidepanel-oval:first-child div{
     width:100%;
-  }
-  .pokemoncard-box{
-    width:inherit;
   }
   .sidepanel{
     width:100%;
@@ -70,14 +87,30 @@
     margin:0;
     position:fixed;
   }
-  .pokecardss{
-    margin-top:25%;
-  }
   .sidepanel-oval{
     width: 100%;
     border-radius: inherit;
     height:inherit;
+    position: relative;
   }
+  .pokecardss{
+    margin-top:23%;
+  }
+  .home-nav{
+    bottom:0;
+  }
+  .profile-nav{
+    bottom: 0;
+  }
+}
+@media (max-width: 874px){
+  .pokemoncard-box{
+    width:inherit;
+  }
+  .pokecardss{
+    margin-top:25%;
+  }
+  
   .pokemoncard-box:hover{
     transform:inherit;
   }
@@ -141,5 +174,19 @@
 @media (max-width:710px){
   .pokecardss{
     margin-top:35%;
+  }
+  .profile-nav{
+    right:0;
+    bottom:0;
+  }
+}
+@media (max-width:500px){
+  .pokecardss{
+    margin-top:45%;
+  }
+}
+@media (max-width:400px){
+  .pokecardss{
+    margin-top:60%;
   }
 }

@@ -22,7 +22,6 @@ body{
 }
 .profile-page-wrapper{
   background-image:linear-gradient(to right, rgb(0, 0, 0), rgba(0, 0, 0, 1));
-   /* url(http://themarkconsulting.com/wp-content/uploads/2015/04/Bank_Vault_3D_Wallpaper-HD.jpg); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -74,7 +73,7 @@ body{
   color:blue;
 }
 .full-content-page {
-  width:60rem;
+  width:100%;
   margin:0 auto;
   background: black;
 }
@@ -99,4 +98,18 @@ body{
   text-align: center;
   color: red;
   text-decoration: underline;
+}
+@media (max-width:621px){
+  .profile-content-wrapper{
+    width:100%;
+  }
+}
+@media (max-width:400px){
+  .user-stats{
+    font-size:27px;
+  }
+  .navbar-bottom{
+    height: 87px;
+    flex-wrap:wrap;
+  }
 }

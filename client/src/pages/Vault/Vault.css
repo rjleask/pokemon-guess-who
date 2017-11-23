@@ -1,17 +1,15 @@
 .page-wrapper{
-  background-image: url(http://themarkconsulting.com/wp-content/uploads/2015/04/Bank_Vault_3D_Wallpaper-HD.jpg);
+  /* background-image: url(http://themarkconsulting.com/wp-content/uploads/2015/04/Bank_Vault_3D_Wallpaper-HD.jpg); */
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
+  background: black;
 }
 .vault-content-wrapper{
   height:100vh;
   width:40%;
   margin:0 auto;
   background-image:linear-gradient(to right, rgba(155, 150, 150, 0.6), rgba(129, 126, 126, 0.6));  
-
-  /* border:5px solid brown; */
-  /* background: rgb(110, 255, 110); */
 }
 .pokemon-trophy-row{
   background-image: url(./myshelf.png);
