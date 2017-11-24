@@ -35,7 +35,7 @@ class Game extends Component {
   componentDidMount () {
     document.addEventListener("keydown", this.onKeyDown);
     this.getPokemon();
-    this.getUserInfo();
+    this.cookieCheck();
   };
 
   onKeyDown = (event) => {
@@ -50,6 +50,7 @@ class Game extends Component {
     API.startGame(this.state.numTiles)
     .then(res => {
       let i = Math.floor(Math.random() * res.data.length);
+      console.log(res.data);
       this.setState({
         allPokemon: res.data,
         correctPokemon: res.data[i],
@@ -58,7 +59,7 @@ class Game extends Component {
         correctPokemonEvolution: res.data[i].evolution,
         correctValue: i,
       })
-      console.log(this.state.correctPokemon);
+      console.log(`The correct pokemon: ${this.state.correctPokemon.title}`);
     })
     .catch(err => console.log(err));
   }
@@ -67,12 +68,15 @@ class Game extends Component {
     this.getPokemon();
     this.setState({
       endGame: false,
-      correctGuess: false
+      correctGuess: false,
+      totalScore: 150,
+      displayEvolveFrom: false,
+      displayEvolveTo: false,
+      displayType: false
     })
   };
 
   getUserInfo = () => {
-    if(this.state.cookie) {
       API.getUserInfo(this.getCookie("user"))
       .then(res => {
         console.log(res.data)
@@ -81,13 +85,12 @@ class Game extends Component {
         });
       })
       .catch(err => console.log(err));
-    }
   };
 
   updateUser = () => {
       API.updateGameWin({
         _id: this.state.user._id,
-        highScore: parseInt(this.state.user.highScore) + parseInt(this.state.totalScore),
+        highScore: parseInt(this.state.user.highScore, 10) + parseInt(this.state.totalScore, 10),
         pokemon: this.state.correctPokemon
       })
       .then(res => {
@@ -96,9 +99,10 @@ class Game extends Component {
       .catch(err => console.log(err));
   };
 
-  cookieCheck(){
-    if(document.cookie.length > 90) {
+  cookieCheck = () => {
+    if(document.cookie.length > 10) {
       this.setState({cookie:true});
+      this.getUserInfo();
     }
     else{
       this.setState({cookie:false});
@@ -134,7 +138,7 @@ class Game extends Component {
     });
     let range = end - this.state.totalScore;
     let increment = -1;
-    let stepTime = Math.abs(Math.floor(1500 / range));
+    let stepTime = Math.abs(Math.floor(1000 / range));
     let timer = setInterval(() => {
       this.setState({
         totalScore: this.state.totalScore + increment
@@ -208,7 +212,7 @@ class Game extends Component {
   };
 
   renderPokeCards = () => {
-    if(this.state.activeGame) {
+    if(this.state.activeGame && this.state.allPokemon) {
       return this.state.allPokemon.map((pokemon, i) => <Pokecard
         key = {i}
         title = {pokemon.title}
@@ -222,7 +226,7 @@ class Game extends Component {
     }
   };
   handleMouseEnter = (type) => {
-    console.log(type);
+    // console.log(type);
   }
 
   divStyles = {
@@ -230,7 +234,7 @@ class Game extends Component {
     padding: "2px",
     border: "1px solid black",
   };
-  
+
   render () {
     return (
       <div>
@@ -238,7 +242,7 @@ class Game extends Component {
         <div className = "sidepanel">
           <div className = "sidepanel-oval">
               <button className="btn btn-primary score-navs home-nav"><Link to="/home">Home</Link></button>
-              <button className="btn btn-primary score-navs profile-nav"><Link to="/profile">Profile</Link></button>            
+              <button className="btn btn-primary score-navs profile-nav"><Link to="/profile">Profile</Link></button>
             {(!this.state.activeGame) ? (
               <NewGameButton
                 onClick = {this.gameStart}
