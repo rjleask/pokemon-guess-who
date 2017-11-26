@@ -6,6 +6,7 @@ import DisplayToggle from "../../components/DisplayToggle";
 import NewGameButton from "../../components/NewGameButton";
 import WinPokeCard from "../../components/WinPokeCard";
 import {Link} from "react-router-dom";
+import UserTour from "../../components/UserTour";
 import "./Game.css";
 
 class Game extends Component {
@@ -42,7 +43,6 @@ class Game extends Component {
     this.setState({
       inputCheck: this.state.inputCheck + event.key
     });
-    console.log(this.state.inputCheck);
     this.easterEgg();
   };
 
@@ -50,7 +50,6 @@ class Game extends Component {
     API.startGame(this.state.numTiles)
     .then(res => {
       let i = Math.floor(Math.random() * res.data.length);
-      console.log(res.data);
       this.setState({
         allPokemon: res.data,
         correctPokemon: res.data[i],
@@ -202,7 +201,6 @@ class Game extends Component {
 
   easterEgg = () => {
     if(this.state.inputCheck.indexOf(this.specialCode) !== -1) {
-      console.log("success");
       this.setState({
         inputCheck: "",
         showHintLink: true
@@ -249,6 +247,7 @@ class Game extends Component {
               />
             ) : (
               <div>
+                <UserTour />
                 <Scoreboard
                   score = {this.state.totalScore}
                 />
@@ -258,6 +257,7 @@ class Game extends Component {
                   displayQuestion = {"Show the Type."}
                   displayAnswer = {this.state.correctPokemonType}
                   disabled = {this.state.correctGuess}
+                  id = {"pokemonType"}
                 />
                 <DisplayToggle
                   showText = {this.state.displayEvolveTo}
@@ -269,6 +269,7 @@ class Game extends Component {
                       "This pokemon does not evolve!"
                     )}
                   disabled = {this.state.correctGuess}
+                  id = {"pokemonEvolveTo"}
                 />
                 <DisplayToggle
                   showText = {this.state.displayEvolveFrom}
@@ -280,6 +281,7 @@ class Game extends Component {
                     "This pokemon did not evolve!"
                   )}
                   disabled = {this.state.correctGuess}
+                  id = {"pokemonEvolveFrom"}
                 />
               </div>
             )}
