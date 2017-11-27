@@ -13,7 +13,7 @@ class UserTour extends Component {
 
   render() {
     return (
-        <div>
+        <div className = "tour-wrapper">
             <Tour
                 active={this.state.isTourActive}
                 step={this.state.tourStep}

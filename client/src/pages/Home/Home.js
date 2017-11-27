@@ -62,6 +62,7 @@ class Home extends Component {
             <div className="content-wrapper">
               <p className="welcome-back">Welcome Back!</p>
               <p className="user-play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play</button></Link></p>
+              <p className="user-profile-btn"><Link to="/profile"><button className="btn button-primary play-btn">Profile</button></Link></p>              
               <Logout />
             </div>
           </div>

@@ -247,7 +247,6 @@ class Game extends Component {
               />
             ) : (
               <div>
-                <UserTour />
                 <Scoreboard
                   score = {this.state.totalScore}
                 />
@@ -313,6 +312,7 @@ class Game extends Component {
           </div>
         </div>
         <div className = "container maingame">
+        <UserTour />          
           <div className = "roww">
             <div className = "pokecardss">
               {this.renderPokeCards()}

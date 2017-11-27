@@ -44,7 +44,7 @@ class Profile extends Component {
                   <div className="navbar-bottom">
                     <span className="nav-item home"><Link to="/home">Home</Link></span>
                     <span className="nav-item play"><Link to="/game">Play</Link></span>
-                    <span className="nav-item vault"><Link to="/vault">Poke Vault</Link></span>
+                    <span className="nav-item vault"><Link to="/vault" target="_blank">Poke Vault</Link></span>
                     <span className="nav-item highscore" onClick={this.handleClick.bind(this)}><a href="#hlist">High Score List</a></span>                 
                   </div>               
               </div>

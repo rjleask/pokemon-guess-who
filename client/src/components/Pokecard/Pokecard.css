@@ -57,3 +57,11 @@
   -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
   box-shadow: 0px 0px 10px 7px rgb(0, 64, 241), 0px 0px 10px 7px #fcfcfc;
 }
+.Dragon:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(179, 0, 59), 0px 0px 10px 7px #fcfcfc;
+}
+.Ice:hover{
+  -webkit-box-shadow: 0px 0px 10px 5px rgb(156, 160, 108), 0px 0px 10px 5px #fcfcfc;
+  box-shadow: 0px 0px 10px 7px rgb(176, 226, 255), 0px 0px 10px 7px #fcfcfc;
+}

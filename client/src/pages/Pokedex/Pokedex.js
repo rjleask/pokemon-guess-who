@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { List, ListItem } from "../../components/List";
-import Login from "../../components/loginBtn";
+import "./Pokedex.css";
 import API from "../../utils/API";
 
 class Pokedex extends Component {
@@ -53,18 +53,17 @@ class Pokedex extends Component {
 
   render () {
     return (
-      <div className = "container">
+      <div className = "container container-pokedex">
         <div className="panel-heading">
-					<h3 className="panel-title">Pokedex</h3>
-          <Login />
+					<h3 className="panel-title panel-title-pokedex">Pokedex<img className="Pokeball" src="https://vignette.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807" alt="Pokeball"></img></h3>
 				</div>
-        <div className = "panel-body">
+        <div className = "panel-body panel-body-pokedex">
           <List>
             {this.state.pokemon.map((pokemon, i) => {
               return (
-                <ListItem key = {i}>
+                <ListItem  key = {i}>
                   <div>
-                    <p className = "text-center">
+                    <p className = "text-center text-center-pokedex">
                       {pokemon.title}
                     </p>
                     <a href = {pokemon.link} target = "_blank">
