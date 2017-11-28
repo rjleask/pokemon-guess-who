@@ -6,8 +6,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 let keys;
 const cookieSession = require('cookie-session');
-const passport = require('passport');
-const passportSetup = require('./config/passport-setup');
+// const passport = require('passport');
+// const passportSetup = require('./config/passport-setup');
 
 
 
@@ -34,8 +34,8 @@ app.use(cookieSession({
 }))
 
 // initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 // routes
 app.use(routes);
 
