@@ -1,12 +1,18 @@
 body {
 	font-size: 16px;
-	background-image: url("https://cdn0.vox-cdn.com/thumbor/Jd7uGu_KZHAovHt7dYAYBX-p4As=/180x0:1872x952/1600x900/cdn0.vox-cdn.com/uploads/chorus_image/image/49104733/pokemon-list.0.0.png");
+
+}
+
+.imgwrapper {
+  width: 100%;
+  background-image: url("https://cdn0.vox-cdn.com/thumbor/Jd7uGu_KZHAovHt7dYAYBX-p4As=/180x0:1872x952/1600x900/cdn0.vox-cdn.com/uploads/chorus_image/image/49104733/pokemon-list.0.0.png");
+  background-attachment: fixed;
 }
 
 .container-pokedex{
 	text-align: center;
 	background-color: black;
-	width: 400px;
+  width: 400px;
 }
 
 .panel-title-pokedex {
