@@ -2,18 +2,20 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 let keys;
 keys = require('./keys');
-
 const User = require('../models/users');
 let google_client;
 let google_secret;
 let url;
-let heroku = true;
-if(heroku){
+const environment = require("./environment");
+
+if(environment.heroku){
+    // console.log(google_client);
   google_client=process.env.GOOGLE_CLIENT_ID;
   google_secret=process.env.GOOGLE_CLIENT_SECRET;
   url = 'https://calm-hamlet-36261.herokuapp.com/api/auth/google/redirect';
   
 }else{
+    console.log("was false");
     google_client=keys.google.clientID;
     google_secret=keys.google.clientSecret;
     url = 'http://localhost:3001/api/auth/google/redirect';

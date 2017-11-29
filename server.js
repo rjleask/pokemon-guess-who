@@ -6,9 +6,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 let keys;
 const cookieSession = require('cookie-session');
-// const passport = require('passport');
-// const passportSetup = require('./config/passport-setup');
-
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
+const environment = require("./config/environment");
 
 
 
@@ -18,8 +18,7 @@ app.use(bodyParser.json());
 app.use(express.static("client/build"));
 // encrypt cookie
 let cook;
-let heroku = true;
-if(heroku){
+if(environment.heroku){
   cook=process.env.COOKIE_KEY;
 }else{
   keys = require('./config/keys');
@@ -34,8 +33,8 @@ app.use(cookieSession({
 }))
 
 // initialize passport
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 // routes
 app.use(routes);
 
