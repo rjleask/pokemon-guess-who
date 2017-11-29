@@ -58,7 +58,6 @@ class Game extends Component {
         correctPokemonEvolution: res.data[i].evolution,
         correctValue: i,
       })
-      console.log(`The correct pokemon: ${this.state.correctPokemon.title}`);
     })
     .catch(err => console.log(err));
   }
@@ -78,7 +77,6 @@ class Game extends Component {
   getUserInfo = () => {
       API.getUserInfo(this.getCookie("user"))
       .then(res => {
-        console.log(res.data)
         this.setState({
           user: res.data
         });
@@ -175,7 +173,6 @@ class Game extends Component {
     if(this.state.cookie) {
       this.updateUser();
     }
-    console.log("You are correct!");
   };
 
   displayType = () => {
@@ -218,14 +215,10 @@ class Game extends Component {
         image = {pokemon.image}
         onClick = {() => this.handleClick(i)}
         style = {this.divStyles}
-        onMouseEnter = {() => this.handleMouseEnter(pokemon.pokeType[0])}
         disabled = {this.state.correctGuess}
         />);
     }
   };
-  handleMouseEnter = (type) => {
-    // console.log(type);
-  }
 
   divStyles = {
     background: "black",
@@ -247,9 +240,11 @@ class Game extends Component {
               />
             ) : (
               <div>
+                <UserTour />
                 <Scoreboard
                   score = {this.state.totalScore}
                 />
+                <div id = "hintarea">
                 <DisplayToggle
                   showText = {this.state.displayType}
                   toggleDisplay = {this.displayType}
@@ -282,6 +277,7 @@ class Game extends Component {
                   disabled = {this.state.correctGuess}
                   id = {"pokemonEvolveFrom"}
                 />
+                </div>
               </div>
             )}
             {(this.state.showHintLink) ? (
@@ -296,8 +292,6 @@ class Game extends Component {
             )}
             {(!this.state.endGame) ? (
               <div className="game-over-msg">
-                <br />
-                Game is not over.
               </div>
             ) : (
               <div>
@@ -312,7 +306,6 @@ class Game extends Component {
           </div>
         </div>
         <div className = "container maingame">
-        <UserTour />          
           <div className = "roww">
             <div className = "pokecardss">
               {this.renderPokeCards()}

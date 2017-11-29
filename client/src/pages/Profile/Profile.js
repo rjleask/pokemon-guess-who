@@ -30,7 +30,7 @@ class Profile extends Component {
        scoreStatus:!this.state.scoreStatus
      })
   }
-  
+
   render(){
     let highscoreVisibility = this.state.scoreStatus ? "hidden" : "initial";
     return (
@@ -45,20 +45,21 @@ class Profile extends Component {
                     <span className="nav-item home"><Link to="/home">Home</Link></span>
                     <span className="nav-item play"><Link to="/game">Play</Link></span>
                     <span className="nav-item vault"><Link to="/vault" target="_blank">Poke Vault</Link></span>
-                    <span className="nav-item highscore" onClick={this.handleClick.bind(this)}><a href="#hlist">High Score List</a></span>                 
-                  </div>               
+                    <span className="nav-item highscore" onClick={this.handleClick.bind(this)}><a href="#hlist">High Score List</a></span>
+                  </div>
               </div>
               <div className="chains">
               </div>
               <div  style={{visibility:highscoreVisibility}} className="highscore-list">
-              <a name="hlist"></a>
+              <a name="hlist">
                 <h2 className="highscore-title">High Score Ranking</h2>
+              </a>
                 {this.state.highScoreList.map((users, i) => {
                   console.log(users.username);
                   return (
                     <div className="highscore-itembox" key={i}>
                       <span className="highscore-items">{users.username}</span>
-                      <span className="highscore-items score">{users.highScore}</span>                      
+                      <span className="highscore-items score">{users.highScore}</span>
                     </div>
                   )
                 })}

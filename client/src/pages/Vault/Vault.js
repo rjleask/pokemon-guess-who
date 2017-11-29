@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import {Link} from "react-router-dom";
 import {List,ListItem} from "../../components/List"
 import "./Vault.css";
 import  myShelfImg from "./myshelf.png";
@@ -38,10 +37,10 @@ class Vault extends Component {
                     <a href = {pokemon.link} target = "_blank">
                       <img src = {pokemon.image} style={this.imgStyle} alt = {this.title}/>
                       <div className = "myshelfBox">
-                        <img src = {myShelfImg} className = "myshelfimg"/>
+                        <img src = {myShelfImg} className = "myshelfimg" alt="decorative"/>
                       </div>
                     </a>
-                   
+
                     <span className = "poketype-span">
                       <strong>Type: </strong> {pokemon.pokeType.map((type, i) => {
                         return (

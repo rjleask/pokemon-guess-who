@@ -1,6 +1,4 @@
 import React from "react";
-import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
 import "./NotFound.css";
 
 const NotFound = () =>
@@ -11,6 +9,6 @@ const NotFound = () =>
               <img src="https://vignette.wikia.nocookie.net/pokemon/images/3/3e/114Tangela.png/revision/latest/scale-to-width-down/200?cb=20140328205759" alt="Tangela" />
             </div>
       </div>
-</div>
+</div>;
 
 export default NotFound;

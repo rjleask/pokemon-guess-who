@@ -39,7 +39,7 @@
   font-size: 14px;
   padding:6px 8px;
   background:red;
-  
+
 }
 .score-btns:hover{
   background: rgb(255, 177, 177);
@@ -63,12 +63,15 @@
   bottom: 10px;
   background: #ff6161;
 }
+
 .score-navs a{
   color:black;
 }
+
 .game-over-msg{
   display: none;
 }
+
 /* media queries */
 
 @media (max-width: 1066px){
@@ -110,7 +113,7 @@
   .pokecardss{
     margin-top:25%;
   }
-  
+
   .pokemoncard-box:hover{
     transform:inherit;
   }
