@@ -4,10 +4,12 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const keys = require('./config/keys');
+let keys;
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
+const environment = require("./config/environment");
+
 
 
 
@@ -15,11 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("client/build"));
 // encrypt cookie
+let cook;
+if(environment.heroku){
+  cook=process.env.COOKIE_KEY;
+}else{
+  keys = require('./config/keys');
+  cook=keys.session.cookieKey;
+}
 app.use(cookieSession({
   // cookie expires after a day
   name:'user',
   maxAge:24*60*60*1000,
-  keys: [keys.session.cookieKey],
+  keys: [cook],
   httpOnly:false
 }))
 
