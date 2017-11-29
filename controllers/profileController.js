@@ -12,7 +12,7 @@ module.exports = {
   },
   getHighScores: function (req, res) {
     db.User
-      .find({}).sort({ highScore: 1}).then(result => res.json(result));
+      .find({}).sort({ highScore: -1}).limit(10).then(result => res.json(result));
   },
   getUniqueUser: function (req, res) {
     db.User
