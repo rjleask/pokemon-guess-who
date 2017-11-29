@@ -30,7 +30,7 @@ class MyModal extends Component {
           animationDuration={1000}>
           <h2>Pokemon Guess Who</h2>
           <p className="modal-btns login-btn"><Login /></p>
-          <p className="modal-btns play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play</button></Link></p> 
+          <p className="modal-btns play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play2</button></Link></p> 
         </Modal>
       </div>
     );
