@@ -5,7 +5,13 @@ const userSchema = new Schema({
   username:String,
   googleId:String,
   userCookie:String,
-  highScore:Number
+  highScore:{
+    type: Number,
+    default: 0
+  },
+  pokemon: {
+    type: []
+  }
 })
 
 const User = mongoose.model('user', userSchema);

@@ -1,9 +1,9 @@
 import React from "react";
 
 const DisplayToggle = props =>
-    <div className = "text-center togglebuttons">
+    <div className = "text-center togglebuttons" id = {props.id}>
       {!props.showText ? (
-        <button onClick={props.toggleDisplay} disabled = {props.disabled}>
+        <button type = "button" className = "btn score-btns" onClick={props.toggleDisplay} disabled = {props.disabled}>
           {props.displayQuestion}
         </button>
       ) : (

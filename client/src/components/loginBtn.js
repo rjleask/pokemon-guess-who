@@ -1,4 +1,7 @@
 import React from "react";
+<<<<<<< HEAD
+
+=======
 import API from "../utils/API";
 let heroku = true;
 let url;
@@ -8,12 +11,13 @@ if(heroku){
 }else{
   url = 'http://localhost:3001/api/auth/google';
 }
+>>>>>>> master
 class Login extends React.Component{
   render(){
     return (
       <a href={url}><button className="btn btn-primary">Login</button></a>
     );
-  
+
   }
 }
 export default Login;

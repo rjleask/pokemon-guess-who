@@ -17,7 +17,7 @@ module.exports = {
         let pokeArray = [];
 
         while (indexArray.length < req.params.num) {
-          let randomnumber = Math.ceil(Math.random() * dbModel.length);
+          let randomnumber = Math.ceil(Math.random() * (dbModel.length - 1));
           if (indexArray.indexOf(randomnumber) > -1) continue;
           indexArray[indexArray.length] = randomnumber;
         }
