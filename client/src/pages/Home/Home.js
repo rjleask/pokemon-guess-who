@@ -22,6 +22,7 @@ class Home extends Component {
       this.setState({cookie:false});
     }
   }
+
   getUserInfo = () => {
     API.getUser()
     .then(res => {
@@ -32,13 +33,17 @@ class Home extends Component {
     })
     .catch(err => console.log(err));
   }
+
   sendCookie = () => {
-    API.saveCookie({
-      username: this.state.username,
-      userCookie: this.getCookie("user")
-    })
-    .then(res => console.log(res.data));
+    if(this.getCookie("user") !== ""){
+      API.saveCookie({
+        username: this.state.username,
+        userCookie: this.getCookie("user")
+      })
+      .then(res => console.log(res.data));
+    }
   }
+
   getCookie = (cookiename) => {
     var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
@@ -62,7 +67,7 @@ class Home extends Component {
             <div className="content-wrapper">
               <p className="welcome-back">Welcome Back!</p>
               <p className="user-play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play</button></Link></p>
-              <p className="user-profile-btn"><Link to="/profile"><button className="btn button-primary play-btn">Profile</button></Link></p>              
+              <p className="user-profile-btn"><Link to="/profile"><button className="btn button-primary play-btn">Profile</button></Link></p>
               <Logout />
             </div>
           </div>

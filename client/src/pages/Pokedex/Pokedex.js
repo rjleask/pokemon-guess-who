@@ -6,18 +6,11 @@ import API from "../../utils/API";
 class Pokedex extends Component {
 
   state = {
-    pokemon: [],
-    inputCheck: ""
+    pokemon: []
   };
-
-  specialCode = "ArrowUpArrowUpArrowUp";
 
   componentDidMount () {
     this.fillPokedex();
-    document.addEventListener("keydown", this.onKeyDown);
-    this.setState({
-      inputCheck: ""
-    });
   };
 
   fillPokedex = () => {
@@ -29,23 +22,6 @@ class Pokedex extends Component {
       })
       .catch(err => console.log(err));
   };
-
-  onKeyDown = (event) => {
-    this.setState({
-      inputCheck: this.state.inputCheck + event.key
-    });
-    console.log(this.state.inputCheck);
-    this.easterEgg();
-  }
-
-  easterEgg = () => {
-    if(this.state.inputCheck.indexOf(this.specialCode) !== -1) {
-      console.log("success");
-      this.setState({
-        inputCheck: ""
-      });
-    }
-  }
 
   imgStyle = {
     height: "100px"

@@ -75,6 +75,7 @@ class Game extends Component {
   };
 
   getUserInfo = () => {
+    if(this.getCookie("user") !== ""){
       API.getUserInfo(this.getCookie("user"))
       .then(res => {
         this.setState({
@@ -82,6 +83,7 @@ class Game extends Component {
         });
       })
       .catch(err => console.log(err));
+    }
   };
 
   updateUser = () => {
