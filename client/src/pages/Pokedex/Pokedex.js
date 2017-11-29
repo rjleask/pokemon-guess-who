@@ -4,14 +4,14 @@ import "./Pokedex.css";
 import API from "../../utils/API";
 
 class Pokedex extends Component {
-  
+
   state = {
     pokemon: [],
     inputCheck: ""
   };
 
   specialCode = "ArrowUpArrowUpArrowUp";
-  
+
   componentDidMount () {
     this.fillPokedex();
     document.addEventListener("keydown", this.onKeyDown);
@@ -53,6 +53,7 @@ class Pokedex extends Component {
 
   render () {
     return (
+      <div className="imgwrapper">
       <div className = "container container-pokedex">
         <div className="panel-heading">
 					<h3 className="panel-title panel-title-pokedex">Pokedex<img className="Pokeball" src="https://vignette.wikia.nocookie.net/youtubepoop/images/4/4c/Pokeball.png/revision/latest?cb=20150418234807" alt="Pokeball"></img></h3>
@@ -85,6 +86,7 @@ class Pokedex extends Component {
             }
           </List>
         </div>
+      </div>
       </div>
     );
   }
