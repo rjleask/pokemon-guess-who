@@ -6,7 +6,7 @@ MERN app that takes the essentials from guess who and adds an exciting pokemon t
 <a href="https://imgflip.com/gif/207v63"><img src="https://i.imgflip.com/207v63.gif" title="made at imgflip.com"/></a>
 <a href="https://imgflip.com/gif/207wxn"><img src="https://i.imgflip.com/207wxn.gif" title="made at imgflip.com"/></a>
 <a href="https://imgflip.com/gif/207x7z"><img src="https://i.imgflip.com/207x7z.gif" title="made at imgflip.com"/></a>
-<a href="https://calm-hamlet-36261.herokuapp.com/">App on Heroku</a>
+<p><a href="https://calm-hamlet-36261.herokuapp.com/">App on Heroku</a></p>
 
 
 
