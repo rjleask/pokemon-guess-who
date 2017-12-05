@@ -5,7 +5,9 @@ module.exports = {
     db.Pokedex
       .find({})
       .sort({ pokeId: 1})
-      .then(dbModel => res.json(dbModel))
+      .then(dbModel => {
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   },
   startGame: function (req, res) {

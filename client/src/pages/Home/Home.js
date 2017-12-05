@@ -7,41 +7,31 @@ import "./Home.css";
 
 class Home extends Component {
   state = {
-    cookie:false,
+    cookie: false,
     username: ""
   }
   componentDidMount(){
     this.cookieCheck();
-    this.getUserInfo();
   }
+
   cookieCheck(){
     if(document.cookie.length > 90) {
       this.setState({cookie:true});
+      this.getUserInfo();
     }
     else{
       this.setState({cookie:false});
     }
   }
+
   getUserInfo = () => {
-    API.getUser()
+    API.getUserInfo()
     .then(res => {
       this.setState({
-        username: res.data[0].username
+        username: res.data.username
       });
-      this.sendCookie();
     })
     .catch(err => console.log(err));
-  }
-  sendCookie = () => {
-    API.saveCookie({
-      username: this.state.username,
-      userCookie: this.getCookie("user")
-    })
-    .then(res => console.log(res.data));
-  }
-  getCookie = (cookiename) => {
-    var cookiestring=RegExp(""+cookiename+"[^;]+").exec(document.cookie);
-    return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
   }
 
   render(){
@@ -62,7 +52,7 @@ class Home extends Component {
             <div className="content-wrapper">
               <p className="welcome-back">Welcome Back!</p>
               <p className="user-play-btn"><Link to="/game"><button className="btn button-primary play-btn">Play</button></Link></p>
-              <p className="user-profile-btn"><Link to="/profile"><button className="btn button-primary play-btn">Profile</button></Link></p>              
+              <p className="user-profile-btn"><Link to="/profile"><button className="btn button-primary play-btn">Profile</button></Link></p>
               <Logout />
             </div>
           </div>

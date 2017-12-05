@@ -16,7 +16,7 @@ module.exports = {
   },
   getUniqueUser: function (req, res) {
     db.User
-      .findOne({userCookie: req.params.cookie})
+      .findOne({_id: req.session.passport.user})
       .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
   },

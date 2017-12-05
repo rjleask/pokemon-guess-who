@@ -76,7 +76,7 @@ class Game extends Component {
 
   getUserInfo = () => {
     if(this.getCookie("user") !== ""){
-      API.getUserInfo(this.getCookie("user"))
+      API.getUserInfo()
       .then(res => {
         this.setState({
           user: res.data

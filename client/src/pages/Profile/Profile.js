@@ -10,27 +10,39 @@ class Profile extends Component {
     highScoreList:[],
     scoreStatus: true
   }
+
   componentDidMount(){
     this.getUserInfo();
+    this.populateHighScoreList();
   }
+
+  populateHighScoreList = () => {
+    API.getHighScores()
+      .then(res => {
+        this.setState({
+          highScoreList: res.data
+        })
+      })
+      .catch(err => console.log(err));
+  }
+
   getUserInfo = () => {
-    API.getUser()
+    API.getUserInfo()
     .then(res => {
       this.setState({
-        username: res.data[0].username,
-        highScore:res.data[0].highScore,
-        highScoreList:res.data
+        username: res.data.username,
+        highScore:res.data.highScore,
       });
-      console.log(res.data);
     })
     .catch(err => console.log(err));
   }
+
   handleClick = () => {
      this.setState({
        scoreStatus:!this.state.scoreStatus
      })
   }
-  
+
   render(){
     let highscoreVisibility = this.state.scoreStatus ? "hidden" : "initial";
     return (
@@ -45,8 +57,8 @@ class Profile extends Component {
                     <span className="nav-item home"><Link to="/home">Home</Link></span>
                     <span className="nav-item play"><Link to="/game">Play</Link></span>
                     <span className="nav-item vault"><Link to="/vault" target="_blank">Poke Vault</Link></span>
-                    <span className="nav-item highscore" onClick={this.handleClick.bind(this)}><a href="#hlist">High Score List</a></span>                 
-                  </div>               
+                    <span className="nav-item highscore" onClick={this.handleClick.bind(this)}><a href="#hlist">High Score List</a></span>
+                  </div>
               </div>
               <div className="chains">
               </div>
@@ -54,11 +66,10 @@ class Profile extends Component {
               <a name="hlist"></a>
                 <h2 className="highscore-title">High Score Ranking</h2>
                 {this.state.highScoreList.map((users, i) => {
-                  console.log(users.username);
                   return (
                     <div className="highscore-itembox" key={i}>
                       <span className="highscore-items">{users.username}</span>
-                      <span className="highscore-items score">{users.highScore}</span>                      
+                      <span className="highscore-items score">{users.highScore}</span>
                     </div>
                   )
                 })}

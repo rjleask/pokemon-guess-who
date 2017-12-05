@@ -4,9 +4,12 @@ const profileController = require('../../controllers/profileController');
 router.route('/user')
   .get(profileController.getUser)
   .post(profileController.updateCookie)
+
+
+router.route("/all/highscore")
   .get(profileController.getHighScores)
 
-router.route("/user/:cookie")
+router.route("/user/unique")
   .get(profileController.getUniqueUser)
 
 router.route("/user/id")

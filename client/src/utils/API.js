@@ -14,10 +14,10 @@ export default {
         return axios.post("/api/profile/user", userData);
     },
     getHighScores: function(){
-      return axios.get("/api/profile/highscore");
+      return axios.get("/api/profile/all/highscore");
     },
-    getUserInfo: function(cookie) {
-      return axios.get(`/api/profile/user/${cookie}`);
+    getUserInfo: function() {
+      return axios.get(`/api/profile/user/unique`);
     },
     updateGameWin: function(userData) {
       return axios.post("api/profile/user/id", userData);

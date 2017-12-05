@@ -1,10 +1,9 @@
 import React from "react";
-import API from "../utils/API";
 let heroku = true;
 let url;
 if(heroku){
   url = 'https://calm-hamlet-36261.herokuapp.com/api/auth/logout';
-  
+
 }else{
   url = 'http://localhost:3001/api/auth/logout';
 }
